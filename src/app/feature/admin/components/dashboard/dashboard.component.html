@@ -1,0 +1,76 @@
+<div class="container-fluid mb-3">
+  <div class="row main">
+    <div class="col-md-4">
+      <div class="card rounded shadow p-3" style="border: none">
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between">
+            <p>TOTAL EARNINGS</p>
+            <p>+16.24 %</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card rounded shadow p-3" style="border: none">
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between">
+            <p>TOTAL EARNINGS</p>
+            <p>+16.24 %</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card rounded shadow p-3" style="border: none">
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between">
+            <p>TOTAL EARNINGS</p>
+            <p>+16.24 %</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card rounded shadow p-3" style="border: none">
+        <div class="card-header">
+          <h5 class="h5 p-2">Pie Charts</h5>
+        </div>
+        <div class="card-content">
+          <div id="chart">
+            <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [labels]="chartOptions.labels"
+              [colors]="chartOptions.colors"
+              [responsive]="chartOptions.responsive"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card rounded shadow p-3" style="border: none">
+        <div class="card-header">
+          <h5 class="h5 p-2">Pollar Charts</h5>
+        </div>
+        <div class="card-content">
+          <div id="chart2">
+            <apx-chart
+              [series]="chartOptions2.series"
+              [chart]="chartOptions2.chart"
+              [labels]="chartOptions2.labels"
+              [fill]="chartOptions2.fill"
+              [stroke]="chartOptions2.stroke"
+              [responsive]="chartOptions2.responsive"
+              [theme]="chartOptions2.theme"
+              [colors]="chartOptions2.colors"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

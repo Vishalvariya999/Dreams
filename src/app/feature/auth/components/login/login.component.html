@@ -1,0 +1,155 @@
+<section class="gradient-form background" style="height: 625px">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="assets/images/logo.jpg"
+                    style="width: 100px; border-radius: 50%"
+                    alt="logo"
+                  />
+                  <h2 class="mt-1 mb-3">Login here</h2>
+                  <hr />
+                </div>
+                <form [formGroup]="loginForm" class="row g-3">
+                  <!-- <div class="col-lg-12">
+                    <label for="" class="form-label"
+                      >Enter E-mail Address</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control form-control-lg"
+                      formControlName="email"
+                      placeholder="Email Address"
+                    />
+                    <small
+                      class="text-danger p-2"
+                      *ngIf="
+                        (frmControl['email'].touched &&
+                          frmControl['email'].errors &&
+                          frmControl['email'].errors['pattern']) ||
+                        (frmControl['email'].touched &&
+                          frmControl['email'].pristine) ||
+                        (submited &&
+                          frmControl['email'].pristine &&
+                          frmControl['email'].invalid)
+                      "
+                      >Enter valid email address</small
+                    >
+                  </div> -->
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email address</mat-label>
+                    <input matInput formControlName="email" />
+                    <mat-error
+                      *ngIf="
+                        (frmControl['email'].touched &&
+                          frmControl['email'].errors &&
+                          frmControl['email'].errors['pattern']) ||
+                        (frmControl['email'].touched &&
+                          frmControl['email'].pristine) ||
+                        (submited &&
+                          frmControl['email'].pristine &&
+                          frmControl['email'].invalid)
+                      "
+                      >Enter valid email</mat-error
+                    >
+                  </mat-form-field>
+                  <!-- <div class="col-lg-12">
+                    <label for="" class="form-label">Password</label>
+                    <input
+                      type="password"
+                      class="form-control form-control-lg"
+                      formControlName="password"
+                      placeholder="Password"
+                    />
+                    <small
+                      class="text-danger p-2"
+                      *ngIf="
+                        (frmControl['password'].touched &&
+                          frmControl['password'].pristine) ||
+                        (submited &&
+                          frmControl['password'].pristine &&
+                          frmControl['password'].invalid)
+                      "
+                      >Enter valid password</small
+                    >
+                  </div> -->
+                  <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input
+                      matInput
+                      formControlName="password"
+                      [type]="hide ? 'password' : 'text'"
+                    />
+                    <button
+                      mat-icon-button
+                      matSuffix
+                      (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide"
+                    >
+                      <mat-icon>{{
+                        hide ? "visibility_off" : "visibility"
+                      }}</mat-icon>
+                    </button>
+                    <mat-error
+                      *ngIf="
+                        (frmControl['password'].touched &&
+                          frmControl['password'].pristine) ||
+                        (submited &&
+                          frmControl['password'].pristine &&
+                          frmControl['password'].invalid)
+                      "
+                      >Enter valid passwod</mat-error
+                    >
+                  </mat-form-field>
+                  <div class="col-lg-12">
+                    <!-- <button
+                      class="btn btn-lg btn-primary w-100"
+                      (click)="onHandleSubmit()"
+                    >
+                      Login
+                    </button> -->
+                    <button
+                      class="btn btn-lg btn-primary w-100"
+                      type="button"
+                      (click)="onHandleSubmit()"
+                    >
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        *ngIf="loading"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      {{ btnName }}
+                    </button>
+                  </div>
+                </form>
+                <div class="text-center fs-6 mt-3">
+                  <a
+                    class="text-decoration-none fw-bold"
+                    [routerLink]="'/auth/fpassword'"
+                    >Forget password?</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+              <img
+                class="p-3"
+                src="assets/images/loginBack.jpg"
+                alt="photo"
+                height="100%"
+                width="100%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

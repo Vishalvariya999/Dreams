@@ -1,0 +1,130 @@
+<div class="container-fluid main">
+  <div class="d-flex justify-content-between mt-2">
+    <h1 class="h1 text-primary fw-bold">Show Hr</h1>
+    <!-- Button trigger modal -->
+    <!-- <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        Add Manager
+      </button> -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      Add Hr +
+    </button>
+  </div>
+  <hr />
+  <table class="table table-sriped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>Salary</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+    </tbody>
+  </table>
+
+  <!-- Slidebar Start -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title fw-bold" id="offcanvasRightLabel">
+        HR Registaration
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="row g-3" [formGroup]="addHrForm">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name" />
+          <mat-error>Enter valid name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>E-mail address</mat-label>
+          <input type="email" matInput formControlName="email" />
+          <mat-error>Enter valid email address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Phone</mat-label>
+          <input type="number" matInput formControlName="mobile" />
+          <mat-error>Enter valid phone number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birth_date"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input type="number" matInput formControlName="salary" />
+          <mat-error>Enter valid salary</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="address"></textarea>
+          <mat-error>Enter valid address</mat-error>
+        </mat-form-field>
+        <div class="col-lg-12">
+          <label for="" class="form-label">Adharcard Image</label>
+          <input
+            type="file"
+            class="form-control form-control-md"
+            formControlName="aadhar_image"
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="" class="form-label">Pancard Image</label>
+          <input
+            type="file"
+            class="form-control form-control-md"
+            formControlName="pancard_image"
+          />
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="onSubmitHandle()">
+            {{ btnName }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Slide End -->
+</div>

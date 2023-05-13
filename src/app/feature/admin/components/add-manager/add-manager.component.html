@@ -1,0 +1,299 @@
+<div class="container-fluid main">
+  <div class="d-flex justify-content-between mt-2">
+    <h1 class="h1 text-primary fw-bold">Show Project Manager</h1>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      Add Manager +
+    </button>
+  </div>
+  <hr />
+  <table class="table table-striped">
+    <thead class="table table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Birth Date</th>
+        <th>Department</th>
+        <th>Address</th>
+        <th>Salary</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let manager of managers; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ manager?.name }}</td>
+        <td>{{ manager?.email }}</td>
+        <td>{{ manager?.mobile }}</td>
+        <td>{{ manager?.birth_date }}</td>
+        <td>{{ manager?.department }}</td>
+        <td>{{ manager?.address }}</td>
+        <td>{{ manager?.salary }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary mx-1"
+            (click)="onHandleView(manager?.id)"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight2"
+            aria-controls="offcanvasRight"
+          >
+            <fa-icon [icon]="faEye"></fa-icon>
+          </button>
+          <button
+            class="btn btn-sm btn-success mx-1"
+            (click)="onHandleUpdate(manager?.id, manager)"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <fa-icon [icon]="faPen"></fa-icon>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="!managers.length">
+        <td class="text-center text-danger" colspan="9">No recored found</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Slidebar Start -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title fw-bold" id="offcanvasRightLabel">
+        {{ pageTitle }}
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="row g-3" [formGroup]="managerRegistartion">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name" />
+          <mat-error>Enter valid name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>E-mail address</mat-label>
+          <input type="email" matInput formControlName="email" />
+          <mat-error>Enter valid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput #postalCode maxlength="10" formControlName="mobile" />
+          <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birth_date"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Language</mat-label>
+          <mat-select formControlName="department">
+            <mat-option
+              *ngFor="let langeage of langeages"
+              [value]="langeage.value"
+            >
+              {{ langeage.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input type="number" matInput formControlName="salary" />
+          <mat-error>Enter valid salary</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="address"></textarea>
+          <mat-error>Enter valid address</mat-error>
+        </mat-form-field>
+        <div class="col-lg-12">
+          <label for="" class="form-label">Adharcard Image</label>
+          <input
+            type="file"
+            class="form-control form-control-md"
+            formControlName="aadhar_image"
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="" class="form-label">Pancard Image</label>
+          <input
+            type="file"
+            class="form-control form-control-md"
+            formControlName="pancard_image"
+          />
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="onSubmitHandle()">
+            {{ btnName }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Slide End -->
+
+  <!-- View Start -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasRight2"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title fw-bold" id="offcanvasRightLabel">
+        View Project Manager Details
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="p-3 border rounded">
+        <div class="row">
+          <div class="col-lg-4">
+            <img
+              [src]="managerDeail?.profile_image"
+              alt="profile_image"
+              height="100px"
+              width="100px"
+            />
+          </div>
+          <div class="col-lg-8 my-auto">
+            <span
+              [ngClass]="
+                managerDeail?.status === 'WORKING'
+                  ? 'badge bg-success'
+                  : 'badge bg-danger'
+              "
+              >{{ managerDeail?.status }}</span
+            >
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Name :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.name }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">E-mail address :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.email }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Mobile :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.mobile }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Department :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.department }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Birth date :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.birth_date }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Salary :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.salary }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-4">
+            <span class="fw-bold">Address :</span>
+          </div>
+          <div class="col-lg-8">
+            <span class="text-primary">{{ managerDeail?.address }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="d-flex flex-column">
+              <img
+                [src]="managerDeail?.aadhar_image"
+                alt="aadhar_image"
+                height="100px"
+                width="100px"
+              />
+              <span class="fw-bold">Aadharcard Image</span>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex flex-column">
+              <img
+                [src]="managerDeail?.pancard_image"
+                alt="pancard_image"
+                height="100px"
+                width="100px"
+              />
+              <span class="fw-bold mt-1">Pancard Image</span>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+  <!-- View End -->
+</div>

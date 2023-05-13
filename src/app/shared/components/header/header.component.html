@@ -1,0 +1,115 @@
+<!-- <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <img
+        src="assets/images/logo.jpg"
+        alt=""
+        style="height: 65px; width: 65px; border-radius: 50%"
+      />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <div class="d-flex">
+          <div class="btn-group">
+            <button
+              type="button"
+              class="dropdown-toggle bg-light"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="border: none"
+            >
+              <img
+                src="assets/images/user2.PNG"
+                alt="logo"
+                height="45px"
+                width="50px"
+                style="border-radius: 50%"
+              />
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item cursor-pointer" href="#">My Profile</a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item cursor-pointer"
+                  (click)="onClickLogout()"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div> -->
+
+<mat-toolbar color="primary" class="fixed-top">
+  <mat-toolbar-row>
+    <span>Dreams Infotech</span>
+    <span class="example-spacer"></span>
+    <div class="btn-group">
+      <!-- <button
+        type="button"
+        class="dropdown-toggle text-white"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="border: none; background-color: #3f51b5"
+      >
+        <img
+          src="assets/images/user2.PNG"
+          alt="logo"
+          height="47px"
+          width="50px"
+          style="border-radius: 50%"
+        />
+      </button> -->
+      <mat-icon fontIcon="account_circle"></mat-icon>
+      <mat-icon
+        fontIcon="expand_more"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        aria-hidden="false"
+        aria-label="Example home icon"
+        class="dropdown-toggle text-white cursor-pointer"
+      ></mat-icon>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item cursor-pointer" href="#">My Profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item cursor-pointer" (click)="onClickLogout()"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="row">
+  <div class="col-md-2">
+    <div class="sidenav">
+      <a
+        class="slideItem"
+        *ngFor="let header of headers"
+        [routerLink]="header.link"
+        [routerLinkActive]="'active'"
+        >{{ header.data }}</a
+      >
+    </div>
+  </div>
+  <div class="col-md-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
