@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
   public submited: boolean = false;
   public btnName: string = 'Login';
   public loading: boolean = false;
-  public hide: boolean = false;
+  public hide: boolean = true;
 
-  @ViewChild('btnLogin') btnLogin!: ElementRef;
+  // @ViewChild('btnLogin') btnLogin!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -35,16 +35,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  validationLogin() {
+  public validationLogin() {
     this.loginForm = this.fb.group({
       email: [
-        '',
+        null,
         [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      password: ['', Validators.required],
+      password: [null, Validators.required],
     });
   }
 
@@ -83,9 +83,8 @@ export class LoginComponent implements OnInit {
         }
       });
       console.log('this.loginForm.value', this.loginForm.value);
-      this.loginForm.reset();
+      // this.loginForm.reset();
       // this.loading = false;
-      this.submited = false;
     }
     // this.loading = false;
   }

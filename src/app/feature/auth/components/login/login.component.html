@@ -12,108 +12,86 @@
                     style="width: 100px; border-radius: 50%"
                     alt="logo"
                   />
-                  <h2 class="mt-1 mb-3">Login here</h2>
+                  <h2 class="mt-1 mb-3">Log in here</h2>
                   <hr />
                 </div>
                 <form [formGroup]="loginForm" class="row g-3">
-                  <!-- <div class="col-lg-12">
-                    <label for="" class="form-label"
-                      >Enter E-mail Address</label
-                    >
+                  <mat-form-field class="col-md-12">
+                    <mat-label class="col-md-12">Email</mat-label>
                     <input
-                      type="email"
-                      class="form-control form-control-lg"
+                      matInput
                       formControlName="email"
-                      placeholder="Email Address"
+                      placeholder="Enter your email id"
                     />
-                    <small
-                      class="text-danger p-2"
+                    <mat-icon
+                      class="error-icon"
+                      matSuffix
                       *ngIf="
                         (frmControl['email'].touched &&
-                          frmControl['email'].errors &&
-                          frmControl['email'].errors['pattern']) ||
-                        (frmControl['email'].touched &&
-                          frmControl['email'].pristine) ||
-                        (submited &&
-                          frmControl['email'].pristine &&
-                          frmControl['email'].invalid)
+                          frmControl['email'].errors) ||
+                        (submited && frmControl['email'].pristine)
                       "
-                      >Enter valid email address</small
+                      >error_outline</mat-icon
                     >
-                  </div> -->
-                  <mat-form-field appearance="fill">
-                    <mat-label>Email address</mat-label>
-                    <input matInput formControlName="email" />
                     <mat-error
                       *ngIf="
                         (frmControl['email'].touched &&
-                          frmControl['email'].errors &&
+                          frmControl['email'].invalid) ||
+                        (frmControl['email'].errors &&
                           frmControl['email'].errors['pattern']) ||
-                        (frmControl['email'].touched &&
-                          frmControl['email'].pristine) ||
-                        (submited &&
-                          frmControl['email'].pristine &&
-                          frmControl['email'].invalid)
+                        (submited && frmControl['email'].pristine)
                       "
-                      >Enter valid email</mat-error
+                      >Email id is required.</mat-error
                     >
                   </mat-form-field>
-                  <!-- <div class="col-lg-12">
-                    <label for="" class="form-label">Password</label>
-                    <input
-                      type="password"
-                      class="form-control form-control-lg"
-                      formControlName="password"
-                      placeholder="Password"
-                    />
-                    <small
-                      class="text-danger p-2"
-                      *ngIf="
-                        (frmControl['password'].touched &&
-                          frmControl['password'].pristine) ||
-                        (submited &&
-                          frmControl['password'].pristine &&
-                          frmControl['password'].invalid)
-                      "
-                      >Enter valid password</small
-                    >
-                  </div> -->
-                  <mat-form-field appearance="fill">
-                    <mat-label>Enter your password</mat-label>
+
+                  <mat-form-field appearance="fill" class="col-md-12">
+                    <mat-label class="col-md-12">Password</mat-label>
                     <input
                       matInput
                       formControlName="password"
                       [type]="hide ? 'password' : 'text'"
+                      placeholder="Enter password"
                     />
+                    <mat-icon
+                      class="error-icon"
+                      matSuffix
+                      *ngIf="
+                        (frmControl['password'].touched &&
+                          frmControl['password'].errors) ||
+                        (submited && frmControl['password'].pristine)
+                      "
+                      >error_outline</mat-icon
+                    >
+                    <mat-error
+                      *ngIf="
+                        (frmControl['password'].touched &&
+                          frmControl['password'].errors) ||
+                        (submited && frmControl['password'].pristine)
+                      "
+                      >Password is required.</mat-error
+                    >
                     <button
                       mat-icon-button
                       matSuffix
                       (click)="hide = !hide"
                       [attr.aria-label]="'Hide password'"
                       [attr.aria-pressed]="hide"
+                      *ngIf="
+                        (!submited &&
+                          !frmControl['password'].touched &&
+                          frmControl['password'].errors) ||
+                        (frmControl['password'].dirty &&
+                          frmControl['password'].valid)
+                      "
                     >
                       <mat-icon>{{
                         hide ? "visibility_off" : "visibility"
                       }}</mat-icon>
                     </button>
-                    <mat-error
-                      *ngIf="
-                        (frmControl['password'].touched &&
-                          frmControl['password'].pristine) ||
-                        (submited &&
-                          frmControl['password'].pristine &&
-                          frmControl['password'].invalid)
-                      "
-                      >Enter valid passwod</mat-error
-                    >
                   </mat-form-field>
+
                   <div class="col-lg-12">
-                    <!-- <button
-                      class="btn btn-lg btn-primary w-100"
-                      (click)="onHandleSubmit()"
-                    >
-                      Login
-                    </button> -->
                     <button
                       class="btn btn-lg btn-primary w-100"
                       type="button"
