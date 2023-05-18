@@ -91,16 +91,55 @@
           <mat-label>Name</mat-label>
           <input type="text" matInput formControlName="name" />
           <mat-error>Enter valid name</mat-error>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['name'].touched && frmControl['name'].errors) ||
+              (submited && frmControl['name'].pristine)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['name'].valid"
+            >task_alt</mat-icon
+          >
         </mat-form-field>
         <mat-form-field>
           <mat-label>E-mail address</mat-label>
           <input type="email" matInput formControlName="email" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['email'].touched && frmControl['email'].invalid) ||
+              (frmControl['email'].errors &&
+                frmControl['email'].errors['pattern']) ||
+              (submited && frmControl['email'].pristine)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['email'].valid"
+            >task_alt</mat-icon
+          >
           <mat-error>Enter valid email address</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Phone</mat-label>
           <input matInput #postalCode maxlength="10" formControlName="mobile" />
           <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['mobile'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Phone number is required.</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>

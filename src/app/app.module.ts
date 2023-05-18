@@ -12,6 +12,7 @@ import { SlidebarComponent } from './shared/components/slidebar/slidebar.compone
 import { MaterialExampleModule } from './shared/material.module';
 import { TokenAccessInterceptor } from './feature/core/interceptor/token-access.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SlidebarComponent,
     MaterialExampleModule,
     FontAwesomeModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     {

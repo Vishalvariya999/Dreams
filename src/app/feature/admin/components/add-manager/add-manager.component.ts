@@ -23,17 +23,7 @@ export class AddManagerComponent implements OnInit {
   public faPen = faPen;
   public faTrash = faTrash;
   public managerDeail: any;
-  // public icons: any = [
-  //   {
-  //     faEye: faEye,
-  //   },
-  //   {
-  //     faPen: faPen,
-  //   },
-  //   {
-  //     faTrash: faTrash,
-  //   },
-  // ];
+  public submited: boolean = false;
   private horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   private verticalPosition: MatSnackBarVerticalPosition = 'top';
   public langeages: any = [
@@ -108,6 +98,7 @@ export class AddManagerComponent implements OnInit {
 
   onSubmitHandle() {
     if (this.managerRegistartion.invalid) {
+      this.submited = true;
       this.toastrService.error('Please Enter valid Details', 'Error');
       return;
     } else {

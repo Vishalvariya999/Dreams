@@ -56,12 +56,12 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     if (this.loginForm.invalid) {
       this.submited = true;
-      console.log('Invalid');
-      this.toastrService.error('Please fill all details', 'Error', {
-        closeButton: true,
-        progressBar: true,
-        progressAnimation: 'decreasing',
-      });
+      // console.log('Invalid');
+      // this.toastrService.error('Please fill all details', 'Error', {
+      //   closeButton: true,
+      //   progressBar: true,
+      //   progressAnimation: 'decreasing',
+      // });
       this.loading = false;
       return;
     } else {
@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access-token', res.data[1].Token);
           localStorage.setItem('role', res.data[0].role);
           localStorage.setItem('email', res.data[0].email);
+          localStorage.setItem('name', res.data[0].name);
           this.router.navigate(['/admin']);
           this.loading = false;
         } else {

@@ -1,63 +1,6 @@
-<!-- <div class="container-fluid">
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <img
-        src="assets/images/logo.jpg"
-        alt=""
-        style="height: 65px; width: 65px; border-radius: 50%"
-      />
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <div class="d-flex">
-          <div class="btn-group">
-            <button
-              type="button"
-              class="dropdown-toggle bg-light"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style="border: none"
-            >
-              <img
-                src="assets/images/user2.PNG"
-                alt="logo"
-                height="45px"
-                width="50px"
-                style="border-radius: 50%"
-              />
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item cursor-pointer" href="#">My Profile</a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item cursor-pointer"
-                  (click)="onClickLogout()"
-                  >Logout</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-</div> -->
-
 <mat-toolbar color="primary" class="fixed-top">
   <mat-toolbar-row>
-    <span>Dreams Infotech</span>
+    <span>Welcome to Dreams Infotech, {{ user_name }}</span>
     <span class="example-spacer"></span>
     <div class="btn-group">
       <!-- <button
@@ -86,11 +29,13 @@
       ></mat-icon>
       <ul class="dropdown-menu">
         <li>
-          <a class="dropdown-item cursor-pointer" href="#">My Profile</a>
+          <a class="dropdown-item cursor-pointer" href="#">
+            <fa-icon [icon]="faUser" class="mx-2"></fa-icon> My Profile</a
+          >
         </li>
         <li>
           <a class="dropdown-item cursor-pointer" (click)="onClickLogout()"
-            >Logout</a
+            ><fa-icon [icon]="faPowerOff" class="mx-2"  ></fa-icon> Logout</a
           >
         </li>
       </ul>

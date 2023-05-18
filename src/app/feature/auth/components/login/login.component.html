@@ -33,6 +33,12 @@
                       "
                       >error_outline</mat-icon
                     >
+                    <mat-icon
+                      class="error-icon-success"
+                      matSuffix
+                      *ngIf="frmControl['email'].valid"
+                      >task_alt</mat-icon
+                    >
                     <mat-error
                       *ngIf="
                         (frmControl['email'].touched &&

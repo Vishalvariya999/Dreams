@@ -1,24 +1,35 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MaterialExampleModule } from '../../material.module';
+import { faPowerOff, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, MaterialExampleModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialExampleModule,
+    FontAwesomeModule,
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   public headers: any;
   public role: any;
+  public user_name: any;
+  public faPowerOff = faPowerOff;
+  public faUser = faUser;
 
   constructor(private router: Router) {
     this.role = localStorage.getItem('role')
       ? localStorage.getItem('role')
       : '';
-    console.log('role:', this.role);
+
+    this.user_name = localStorage.getItem('name');
   }
   ngOnInit(): void {
     this.route();
@@ -127,6 +138,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public onClickLogout() {
+    confirm('Are you sure logout?')
     this.router.navigate(['/auth/login']);
     localStorage.clear();
   }
