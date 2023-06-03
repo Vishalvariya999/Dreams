@@ -8,7 +8,7 @@ import { ShowTaskComponent } from './components/show-task/show-task.component';
 import { EmpBankdetailsComponent } from './components/emp-bankdetails/emp-bankdetails.component';
 import { AddAwardComponent } from './components/add-award/add-award.component';
 import { ShowNoticeComponent } from './components/show-notice/show-notice.component';
-
+import { HrDashboardComponent } from './components/hr-dashboard/hr-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +17,9 @@ import { ShowNoticeComponent } from './components/show-notice/show-notice.compon
     ShowTaskComponent,
     EmpBankdetailsComponent,
     AddAwardComponent,
-    ShowNoticeComponent
-  ],
-  imports: [
-    CommonModule,
-    HrRoutingModule
-  ]
+    ShowNoticeComponent,
+    HrDashboardComponent,
+],
+  imports: [CommonModule, HrRoutingModule],
 })
-export class HrModule { }
+export class HrModule {}

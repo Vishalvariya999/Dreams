@@ -76,7 +76,22 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', res.data[0].role);
           localStorage.setItem('email', res.data[0].email);
           localStorage.setItem('name', res.data[0].name);
-          this.router.navigate(['/admin']);
+          switch (res.data[0].role) {
+            case 'SuperAdmin':
+              this.router.navigate(['/admin']);
+              break;
+            case 'HR':
+              this.router.navigate(['/hr']);
+              break;
+            case 'MANAGER':
+              this.router.navigate(['/proj_manager']);
+              break;
+            case 'EMPLOYEE':
+              this.router.navigate(['/employee']);
+              break;
+            default:
+              break;
+          }
           this.loading = false;
         } else {
           this.toastrService.error(res.message, 'Error');

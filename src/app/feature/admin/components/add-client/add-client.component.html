@@ -49,82 +49,203 @@
     <div class="offcanvas-body">
       <form class="row g-3" [formGroup]="clientRegistration">
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input type="text" matInput formControlName="name" />
+          <mat-label>Client Name</mat-label>
+          <input type="text" matInput formControlName="client_name" />
           <mat-error>Enter valid name</mat-error>
           <mat-icon
             class="error-icon"
             matSuffix
             *ngIf="
-              (frmControl['name'].touched && frmControl['name'].errors) ||
-              (submited && frmControl['name'].pristine)
+              (frmControl['client_name'].touched &&
+                frmControl['client_name'].errors) ||
+              (submited && frmControl['client_name'].invalid)
             "
             >error_outline</mat-icon
           >
           <mat-icon
             class="error-icon-success"
             matSuffix
-            *ngIf="frmControl['name'].valid"
+            *ngIf="frmControl['client_name'].valid"
             >task_alt</mat-icon
           >
         </mat-form-field>
         <mat-form-field>
           <mat-label>E-mail address</mat-label>
-          <input type="email" matInput formControlName="email" />
+          <input type="email" matInput formControlName="client_email" />
           <mat-icon
             class="error-icon"
             matSuffix
             *ngIf="
-              (frmControl['email'].touched && frmControl['email'].invalid) ||
-              (frmControl['email'].errors &&
-                frmControl['email'].errors['pattern']) ||
-              (submited && frmControl['email'].pristine)
+              (frmControl['client_email'].touched &&
+                frmControl['client_email'].invalid) ||
+              (frmControl['client_email'].errors &&
+                frmControl['client_email'].errors['pattern']) ||
+              (submited && frmControl['client_email'].invalid)
             "
             >error_outline</mat-icon
           >
           <mat-icon
             class="error-icon-success"
             matSuffix
-            *ngIf="frmControl['email'].valid"
+            *ngIf="frmControl['client_email'].valid"
             >task_alt</mat-icon
           >
           <mat-error>Enter valid email address</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Phone</mat-label>
-          <input matInput #postalCode maxlength="10" formControlName="mobile" />
+          <input
+            type="text"
+            matInput
+            #postalCode
+            maxlength="10"
+            formControlName="client_mobile"
+          />
           <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['client_mobile'].touched &&
+                frmControl['client_mobile'].errors) ||
+              (submited && frmControl['client_mobile'].invalid)
+            "
+            >error_outline</mat-icon
+          >
           <mat-icon
             class="error-icon-success"
             matSuffix
-            *ngIf="frmControl['mobile'].valid"
+            *ngIf="frmControl['client_mobile'].valid"
             >task_alt</mat-icon
           >
           <mat-error>Phone number is required.</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Choose a date</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="birth_date"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Salary</mat-label>
-          <input type="number" matInput formControlName="salary" />
-          <mat-error>Enter valid salary</mat-error>
+          <mat-label>Facebook Id</mat-label>
+          <input type="text" matInput formControlName="facebook_id" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['facebook_id'].touched &&
+                frmControl['facebook_id'].errors) ||
+              (submited && frmControl['facebook_id'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['facebook_id'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Facebook_id is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Instagram Id</mat-label>
+          <input type="text" matInput formControlName="insta_id" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['insta_id'].touched &&
+                frmControl['insta_id'].errors) ||
+              (submited && frmControl['insta_id'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['insta_id'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Instagram_id is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Linkdin Id</mat-label>
+          <input type="text" matInput formControlName="linkedin_id" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['linkedin_id'].touched &&
+                frmControl['linkedin_id'].errors) ||
+              (submited && frmControl['linkedin_id'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['linkedin_id'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Linkdin_id is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input type="text" matInput formControlName="location" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['location'].touched &&
+                frmControl['location'].errors) ||
+              (submited && frmControl['location'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['location'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Location is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Home Address</mat-label>
+          <textarea matInput formControlName="client_address"></textarea>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['client_address'].touched &&
+                frmControl['client_address'].errors) ||
+              (submited && frmControl['client_address'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['client_address'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Enter valid address</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <textarea matInput formControlName="address"></textarea>
+          <mat-label>Office Address</mat-label>
+          <textarea matInput formControlName="office_address"></textarea>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['office_address'].touched &&
+                frmControl['office_address'].errors) ||
+              (submited && frmControl['office_address'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['office_address'].valid"
+            >task_alt</mat-icon
+          >
           <mat-error>Enter valid address</mat-error>
         </mat-form-field>
         <div class="col-lg-12">
@@ -133,14 +254,6 @@
             type="file"
             class="form-control form-control-md"
             formControlName="aadhar_image"
-          />
-        </div>
-        <div class="col-lg-12">
-          <label for="" class="form-label">Pancard Image</label>
-          <input
-            type="file"
-            class="form-control form-control-md"
-            formControlName="pancard_image"
           />
         </div>
         <div>

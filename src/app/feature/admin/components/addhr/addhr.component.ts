@@ -11,6 +11,7 @@ import { AdminService } from '../../services/admin.service';
 export class AddhrComponent {
   public addHrForm!: FormGroup;
   public btnName: string = 'Submit';
+  public submited: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +53,7 @@ export class AddhrComponent {
 
   public onSubmitHandle() {
     if (this.addHrForm.invalid) {
+      this.submited = true;
       this.toastrService.error('Please Enter valid Details', 'Error');
       return;
     } else {

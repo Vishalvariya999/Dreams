@@ -1,3 +1,183 @@
 <div class="container-fluid main">
-  <h5>Project</h5>
+  <div class="d-flex flex-row justify-content-between">
+    <h1 class="h1 text-primary fw-bold">Project Details</h1>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      Add Project +
+    </button>
+  </div>
+  <hr />
+  <table class="table table-sriped">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Client Name</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Pro Email</th>
+        <th>Department</th>
+        <th>Payment Amount</th>
+        <th>Description</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+    </tbody>
+  </table>
+  <!-- Slidebar Start -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title fw-bold" id="offcanvasRightLabel">
+        Project Registaration
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="row g-3" [formGroup]="projectForm">
+        <mat-form-field>
+          <mat-label>Project Name</mat-label>
+          <input type="text" matInput formControlName="project_name" />
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['project_name'].touched &&
+                frmControl['project_name'].errors) ||
+              (submited && frmControl['project_name'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['project_name'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Enter valid name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Client Name</mat-label>
+          <input type="email" matInput formControlName="client_name" />
+          <mat-error>Enter valid email address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Project Manager Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="project_manager_email"
+          />
+          <mat-error>Enter valid email address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Department</mat-label>
+          <input type="email" matInput formControlName="department" />
+          <mat-error>Select Department</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>From Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="from_date"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Select From date</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>To Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="to_date" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Select To date</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Payment</mat-label>
+          <input matInput formControlName="payment" />
+          <mat-error>Payment is required.</mat-error>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['payment'].touched && frmControl['payment'].errors) ||
+              (submited && frmControl['payment'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['payment'].valid"
+            >task_alt</mat-icon
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-icon
+            class="error-icon"
+            matSuffix
+            *ngIf="
+              (frmControl['description'].touched &&
+                frmControl['description'].errors) ||
+              (submited && frmControl['description'].invalid)
+            "
+            >error_outline</mat-icon
+          >
+          <mat-icon
+            class="error-icon-success"
+            matSuffix
+            *ngIf="frmControl['description'].valid"
+            >task_alt</mat-icon
+          >
+          <mat-error>Enter valid address</mat-error>
+        </mat-form-field>
+        <div class="col-lg-12">
+          <label for="" class="form-label">Adharcard Image</label>
+          <input
+            type="file"
+            class="form-control form-control-md"
+            formControlName="project_image"
+          />
+        </div>
+
+        <div>
+          <button class="btn btn-primary" (click)="onSubmitHandle()">
+            {{ btnName }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Slide End -->
 </div>
