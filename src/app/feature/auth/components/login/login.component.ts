@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     if (this.loginForm.invalid) {
       this.submited = true;
+      this.loginForm.markAllAsTouched();
       // console.log('Invalid');
       // this.toastrService.error('Please fill all details', 'Error', {
       //   closeButton: true,
