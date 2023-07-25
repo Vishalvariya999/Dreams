@@ -1,4 +1,4 @@
-.background{
+.background {
     background: url('../../../../../assets/images/back2.jpg');
     height: 100%;
     width: 100%;
@@ -6,15 +6,20 @@
     background-repeat: no-repeat;
 }
 
-.bordered{
+.bordered {
     border: none;
     outline: none
 }
 
-.error-icon{
+.error-icon {
     color: red;
 }
 
-.error-icon-success{
+.error-icon-success {
     color: green;
 }
+
+// .invalid-error {
+//     background-color: #fdf0f1;
+//     border-color: #e0293b;
+// }
